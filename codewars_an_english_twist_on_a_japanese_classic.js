@@ -34,6 +34,23 @@ Resources:
 https://en.wikipedia.org/wiki/Shiritori
 */
 
-function shiritori(words) {
-  //insert code
+const shiritori = (words) => {
+  let index = words[0].length - 1;
+  let lastLetter = words[0][index];
+  let validStrings = [];
+  for(let i = 0; i < words.length; i++) {
+    if(i === 0 && words[i].length > 0) {
+      validStrings.push(words[i]);
+    } else if(i === 0 && words[i].length === 0) {
+      break;
+    } else if(i > 0 && words[i][0] === lastLetter) {
+      validStrings.push(words[i]);
+      index = words[i].length - 1;
+      lastLetter = words[i][index];
+    } else if(i > 0 && words[i][0] !== lastLetter) {
+      break;
+    }
+  }
+
+  return validStrings;
 }
